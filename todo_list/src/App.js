@@ -24,7 +24,10 @@ const App = () => {
   }
   
   
-  // Add the deleteToDo code here
+  function deleteTodo(id) {
+    let updatedTodos = [...todos].filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  }
 
   
   // Add the toggleComplete code here
@@ -45,7 +48,11 @@ return(
     />
     <button type ="submit">Add Todo</button>
   </form>
-  {todos.map((todo,i) => <div key={todo+i}>{todo.text}</div>)}
+  {todos.map((todo,i) => <div key={todo+i}>
+    {todo.text}
+    <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+    </div>
+  )}
 </div>
 );
 };
